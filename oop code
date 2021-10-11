@@ -1,0 +1,318 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define pb push_back
+//maH
+//megapixels
+//rupees
+//gb
+//stars
+class mobile{
+private :
+    int battery_life;
+    int cam_res;
+    int price;
+    int ram;
+    float rating ;
+    string model_name;
+    string brand_name;
+public:
+    mobile()
+    {
+        price = 10000;
+        cam_res = 38;
+        battery_life = 4000;
+        ram = 4 ;
+        rating = 4;
+
+
+    }
+    mobile(int price,int battery_life,float rating ,int ram,int cam_res,string brand_name,string model_name)
+    {
+        this->price = price;
+        this->battery_life = battery_life;
+        this->rating = rating ;
+        this->ram = ram;
+        this->cam_res = cam_res;
+        this->brand_name = brand_name;
+        this->model_name = model_name;
+    }
+    void show_data(){
+    cout<<"price   ------  "<<price<<" rupees"<<endl;
+    cout<<"battery_life  ------  "<<battery_life<<" maH"<<endl;
+    cout<<"ram   ------  "<<ram<<" gb"<<endl;
+    cout<<"camera resolution   ------  "<<cam_res<<" megapixels"<<endl;
+    cout<<"rating   ------  "<<rating<<endl;
+    cout<<"model name   ------   "<<model_name<<endl;
+    cout<<"brand name   ------   "<<brand_name<<endl;
+
+    }
+    int show_price()
+    {
+        return price;
+    }
+    float show_rating()
+    {
+        return rating;
+    }
+    int show_battery_life()
+    {
+        return battery_life;
+    }
+    int show_ram()
+    {
+        return ram;
+    }
+    int show_cam_res()
+    {
+        return cam_res;
+    }
+    string show_model_name()
+    {
+        return model_name;
+    }
+    string show_brand_name()
+    {
+        return brand_name;
+    }
+    void update_rating (float rating )
+    {
+        this->rating = rating ;
+    }
+
+};
+
+template<class t1,class t2>
+void compare(t1 &model_1,t2 &model_2)
+{
+
+   cout<<model_1.show_price()<<"  ----  "<<model_2.show_price()<<endl;
+    cout<<model_1.show_rating()<<"  ----  "<<model_2.show_rating() <<endl;
+    cout<<model_1.show_cam_res()<<"  ----  "<<model_2.show_cam_res()<<endl;
+    cout<<model_1.show_ram()<<"  ----  "<<model_2.show_ram()<<endl;
+    cout<<model_1.show_battery_life()<<"  ----  "<<model_2.show_battery_life()<<endl;
+
+
+}
+
+template<class t1,class t2,class t3>
+void compare(t1 &model_1,t2 &model_2, t3 &model_3)
+{
+
+   cout<<model_1.show_price()<<"  ----  "<<model_2.show_price()<<"----- "<<model_3.show_price()<<endl;
+    cout<<model_1.show_rating()<<"  ----  "<<model_2.show_rating() <<"----- "<<model_3.show_rating()<<endl;
+    cout<<model_1.show_cam_res()<<"  ----  "<<model_2.show_cam_res()<<"----- "<<model_3.show_cam_res()<<endl;
+    cout<<model_1.show_ram()<<"  ----  "<<model_2.show_ram()<<"----- "<<model_3.show_ram()<<endl;
+    cout<<model_1.show_battery_life()<<"  ----  "<<model_2.show_battery_life()<<"----- "<<model_3.show_battery_life()<<endl;
+
+
+}
+
+int main(){
+
+    vector<mobile>store;
+    mobile obj1(11999,5000,3.5,6,48,"realme","X2");store.pb(obj1);
+    mobile obj2(19000,4000,2,8,64,"vivo","V8");store.pb(obj2);
+    mobile obj3(11999,4500,3.5,6,20,"oppo","V18");store.pb(obj3);
+    mobile obj4(11999,4700,3.5,4,28,"redmi","note7");store.pb(obj4);
+    mobile obj5(8999,5500,3.5,8,40,"oneplus","T");store.pb(obj5);
+    mobile obj6(9499,5200,3.5,6,64,"poco","M2pro");store.pb(obj6);
+    mobile obj7(13999,4700,3.5,4,36,"samsung","galaxy");store.pb(obj7);
+    compare(obj1,obj2);
+    string s;
+do{
+
+    cout<<"Hello User!"<<endl;
+    cout<<"WElCOME TO THE NEWLY BUILD SMARTPHONE REPOSITORY"<<endl;
+    cout<<"^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"<<endl;
+    cout<<"Enter your choice amongst the following "<<endl;
+    cout<<endl;
+    cout<<"1. SEARCH FOR SPECIFICATIONS OF A PARTICULAR PHONE "<<endl;
+    cout<<"2. FILTER SMARTPHONES BASED ON SPECIFICATIONS "<<endl;
+    cout<<"3. COMPARE ANY TWO SMARTPHONES OF YOUR CHOICE "<<endl;
+    cout<<"4. RENDER YOUR RATING ON A PHONE "<<endl;
+    cout<<"5. VIEW THE LIST OF ALL THE EXISTING SMARTPHONES IN THIS REPOSITORY"<<endl;
+
+    int option;
+    cin>>option;
+    switch(option)
+    {
+case 1 : {
+    cout<<"Enter the brand name and model name of the phone you wish to view "<<endl;
+        string t1,t2;
+        cin>>t1>>t2;
+        mobile sample ;
+        for(int i =0;i<store.size();i++){
+            if(store[i].show_model_name()==t2 && store[i].show_brand_name()==t1){
+                    store[i].show_data();
+                    break;
+            }
+        }
+        break;
+}
+
+case 2 : {
+    cout<<"Enter the specifications based on which you want to filter mobile phone"<<endl;
+        cout<<"1.Price\n2.Battery\n3.Ratings\n4.RAM\n5.Camera resolution\n6.Brand\n7.Model name\n";
+        int s;
+        cin>>s;
+        if(s==1)
+        {  cout<<"price range 1000-10000\n";
+          for(int i=0;i<store.size();i++)
+          {
+              if(store[i].show_price()>=1000&&store[i].show_price()<=10000)
+                store[i].show_data();
+              cout<<endl;
+          }
+          cout<<"price range 10001-20000\n";
+          for(int i=0;i<store.size();i++)
+          {
+              if(store[i].show_price()>10000&&store[i].show_price()<=20000)
+                store[i].show_data();
+              cout<<endl;
+          }
+          cout<<"price range 20001-30000\n";
+          for(int i=0;i<store.size();i++)
+          {
+              if(store[i].show_price()>=20000&&store[i].show_price()<=30000)
+                store[i].show_data();
+              cout<<endl;
+          }
+        }
+        else if(s==2)
+        {
+
+            cout<<"battery range 3000-4000\n";
+          for(int i=0;i<store.size();i++)
+          {
+              if(store[i].show_battery_life()>=3000&&store[i].show_battery_life()<4000)
+                store[i].show_data();
+              cout<<endl;
+          }
+          cout<<"battery range 4000-5000\n";
+          for(int i=0;i<store.size();i++)
+          {
+              if(store[i].show_battery_life()>=4000&&store[i].show_battery_life()<5000)
+                store[i].show_data();
+              cout<<endl;
+          }
+          cout<<"battery range 5000-6000\n";
+          for(int i=0;i<store.size();i++)
+          {
+              if(store[i].show_battery_life()>=5000&&store[i].show_battery_life()<=6000)
+                store[i].show_data();
+              cout<<endl;
+          }
+        }
+        else if(s==3)
+        {
+            cout<<"camera resolution 20-35\n";
+          for(int i=0;i<store.size();i++)
+          {
+              if(store[i].show_cam_res()>=20&&store[i].show_cam_res()<35)
+                store[i].show_data();
+              cout<<endl;
+          }
+          cout<<"Camera resolution 35-50\n";
+          for(int i=0;i<store.size();i++)
+          {
+              if(store[i].show_cam_res()>=35&&store[i].show_cam_res()<50)
+                store[i].show_data();
+              cout<<endl;
+          }
+          cout<<"Camera Resolution 50-65\n";
+          for(int i=0;i<store.size();i++)
+          {
+              if(store[i].show_cam_res()>=50&&store[i].show_cam_res()<=65)
+                store[i].show_data();
+              cout<<endl;
+          }
+
+        }
+        break;
+}
+case 3: {
+    cout<<"Enter the number of smartphones you want compare (2 or 3)"<<endl;
+
+        int opt;
+        cin>>opt;
+        if(opt==2)
+        {   string s1,s2;
+            cout<<"Enter the name of two models you want to compare"<<endl;
+            cin>>s1>>s2;
+            mobile o1,o2;
+           for(int i=0;i<store.size();i++)
+           {
+               if(store[i].show_model_name()==s1)
+                o1=store[i];
+                if(store[i].show_model_name()==s2)
+                   o2=store[i];
+
+           }
+            compare(o1,o2);
+        }
+        if(opt==3)
+        {
+            string s1,s2,s3;
+            cout<<"Enter the name of three models you want to compare"<<endl;
+            cin>>s1>>s2>>s3;
+            mobile o1,o2,o3;
+              for(int i=0;i<store.size();i++)
+           {
+               if(store[i].show_model_name()==s1)
+                o1=store[i];
+                if(store[i].show_model_name()==s2)
+                   o2=store[i];
+                  if(store[i].show_model_name()==s3)
+                   o3=store[i];
+           }
+            compare(o1,o2,o3);
+
+        }
+
+
+
+        break;
+}
+case 4: {
+    cout<<"Enter your ratings about a particular model "<<endl;
+        cout<<"Enter model name and rating "<<endl;
+        float rating ;
+        string model_name;
+        cin >> model_name >> rating;
+        mobile type;
+        for(int i=0;i<store.size();i++)
+        {
+
+            if(model_name == store[i].show_model_name())
+            {store[i].update_rating(rating);}
+
+        }
+
+
+        break;
+    }
+case 5:
+    {
+
+        for(int i=0;i<store.size();i++)
+        {
+
+            cout<<store[i].show_brand_name()<<" "<<store[i].show_model_name()<<endl;
+        }
+        break;
+    }
+default :{
+        cout<<"Invalid Input"<<endl;
+        exit(0);
+        break;
+}
+
+    }
+    cout<<"Do you want to continue(yes or no) "<<endl;
+cout<<"\n\n";
+cin>>s;
+
+}while(!s.compare("yes"));
+
+return 0;
+}
