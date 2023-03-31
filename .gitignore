@@ -18,10 +18,11 @@ build/
 docs/_build/
 .vscode
 
-# Coverage reports
 htmlcov/
 .coverage
 .coverage.*
 *,cover
 
-.__pycache__/
+__pycache__/
+_pycache_/
+__pycache__
